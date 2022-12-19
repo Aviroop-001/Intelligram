@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Bookstore",
-    "slug": "Bookstore",
+    "name": "socialApp",
+    "slug": "socialApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
