@@ -6,8 +6,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Feed from './Feed';
 import Compose from './Compose';
 import Profile from './Profile';
-import Search from './Search'
-
+import SearchPage from './SearchPage'
 
 const Home = () => {
   const Tab = createBottomTabNavigator();
@@ -23,7 +22,7 @@ const Home = () => {
         tabBarIcon:({color, size})=>(  
           <Ionicons name="ios-home" color={color} size={30}/>  )  
       }} />
-      <Tab.Screen name="Search" component={Search} options ={{
+      <Tab.Screen name="SearchPage" component={SearchPage} options ={{
         tabBarShowLabel: false,
         tabBarActiveTintColor: 'yellow',
         tabBarIcon:({color, size})=>(  

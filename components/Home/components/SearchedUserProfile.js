@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const SearchedUserProfile = ({otherUser}) => {
+const SearchedUserProfile = ({route}) => {
+  // console.log(route.params.otherUser);
   return (
     <View>
-      <Text>SearchedUserProfile</Text>
+      <Text>{route.params.otherUser.username}</Text>
     </View>
   )
 }
