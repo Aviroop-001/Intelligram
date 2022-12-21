@@ -16,7 +16,7 @@ const SearchPage = () => {
   return (
         <Stack.Navigator initialRouteName="Landing">
           <Stack.Screen name="Search" component={Search} options={screenOptions} />
-          <Stack.Screen name="SearchedUserProfile" component={SearchedUserProfile} options={{headerShown: false}} />
+          <Stack.Screen name="SearchedUserProfile" component={SearchedUserProfile} options={{title: 'Profile'}} />
         </Stack.Navigator>
   );
 };
