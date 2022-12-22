@@ -38,6 +38,6 @@ const styles = StyleSheet.create({
       btnTitleStyle:{
         marginHorizontal: 5,
         color: "wheat",
-        fontSize: '1.6rem'
+        fontSize: 25
       },
 })

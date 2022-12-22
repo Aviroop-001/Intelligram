@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
   },
   headerText: {
-    fontSize: "1.6rem",
+    fontSize: 25,
     letterSpacing: 2,
     fontWeight: "bold",
   },
@@ -95,6 +95,6 @@ const styles = StyleSheet.create({
   btnTitleStyle: {
     marginHorizontal: 5,
     color: "wheat",
-    fontSize: "1.6rem",
+    fontSize: 25,
   },
 });

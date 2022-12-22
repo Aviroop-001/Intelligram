@@ -4,6 +4,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     loggedUser: null,
     userPosts: null,
+    likedPosts: null,
   }
 
   export const userSlice = createSlice({
@@ -19,9 +20,12 @@ const initialState = {
       },
       fetchCurrentUserPostsRedux: (state, action) =>{
         state.userPosts = action.payload
-      }
+      },
+      fetchLikedPostsRedux: (state,action) =>{
+        state.likedPosts = action.payload
+      },
     },
   })
 
-  export const { userLoginRedux, userLogoutRedux, fetchCurrentUserPostsRedux } = userSlice.actions
+  export const { userLoginRedux, userLogoutRedux, fetchCurrentUserPostsRedux, fetchLikedPostsRedux } = userSlice.actions
   export default userSlice.reducer

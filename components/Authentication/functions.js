@@ -10,7 +10,8 @@ const registerUser = async ({username, email, password}) => {
       try {
         await setDoc(doc(db, "users", user.uid), {  //creating a doc with user details and custom doc id
           username: username,
-          email: email
+          email: email,
+          likes: [],
         });
       } catch (e) {
         console.error("Error adding document: ", e);
