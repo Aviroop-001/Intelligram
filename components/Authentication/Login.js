@@ -46,7 +46,6 @@ const Login = ({ navigation }) => {
               const user = userCredential.user;
               console.log("User Logged in");
               dispatch(userLoginRedux(user));
-              console.log(user);
             })
             .catch((error) => {
               const errorCode = error.code;

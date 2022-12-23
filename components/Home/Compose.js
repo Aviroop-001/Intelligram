@@ -28,7 +28,7 @@ const Compose = ({navigation}) => {
 
   const postHandler = async(imageUrl) =>{
     const postData = {
-      author: currentUser.uid,
+      author: currentUser.displayName,
       caption: caption,
       image: imageUrl,
       createdAt: serverTimestamp(),
