@@ -4,6 +4,7 @@ import { Input } from "@rneui/themed";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { doc, getDocs, collection, query, where } from "firebase/firestore";
 import { db } from "../../../firbase";
+import { ScrollView } from "react-native-web";
 
 const Search = ({ navigation }) => {
   //states
@@ -36,7 +37,7 @@ const Search = ({ navigation }) => {
         onChange={(e) => searchUser(e.target.value)}
       />
       {userList.length ? (
-        <View style={styles.itemContainer}>
+        <ScrollView style={styles.itemContainer}>
           {userList.map((l) => (
             <TouchableOpacity
               style={styles.item}
@@ -48,7 +49,7 @@ const Search = ({ navigation }) => {
               <Text style={styles.itemTitle}>{l.username}</Text>
             </TouchableOpacity>
           ))}
-        </View>
+        </ScrollView>
       ) : (
         <Text>No User Found</Text>
       )}
@@ -60,16 +61,24 @@ export default Search;
 
 const styles = StyleSheet.create({
   inputContainer: {
-    padding: 20,
+    width: 300,
+    padding: 10,
     marginTop: 30,
   },
   itemContainer:{
-
+    width: 300,
+    marginHorizontal: 'auto'
   },
   item:{
-
+    height: 40,
+    padding: 10,
+    margin: 2,
+    borderColor: '#d4d4d4',
+    borderWidth: 1,
   },
   itemTitle:{
-
+    fontSize: 18,
+    textAlign: 'center',
+    justifyContent: 'center',
   }
 });

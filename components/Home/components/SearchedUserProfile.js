@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image} from "react-native";
+import { StyleSheet, Text, View, Image, ScrollView} from "react-native";
 import { Button } from '@rneui/themed';
 import { useState, useEffect, React } from "react";
 import { doc, getDocs, collection, query, where } from "firebase/firestore";
@@ -8,7 +8,6 @@ import IonIcon from 'react-native-vector-icons/Ionicons';
 const SearchedUserProfile = ({ route }) => {
   //states
   const [posts, setposts] = useState();
-  const [likedPost, setlikedPost] = useState(false);
 
   //functions
   const fetchPosts = async () => {
@@ -48,23 +47,15 @@ const SearchedUserProfile = ({ route }) => {
 
   return (
     <View>
-      <Text>{route.params.otherUser.username}</Text>
-      <View>
+      <Text style={styles.header}>{route.params.otherUser.username}</Text>
+      <ScrollView>
         {posts?.map((p) => (
           <View key={Math.random().toString(36)} style={styles.postContainer}>
-            <Text>{p.caption}</Text>
+            <Text style={styles.postCaption}>{p.caption}</Text>
             <Image source={{ uri: p.image }} style={styles.postImage} />
-            <Button type="clear" onPress={() => setlikedPost(!likedPost)}>
-              <IonIcon
-                name={likedPost ? "heart" : "heart-outline"}
-                size={16}
-                color="crimson"
-              />
-              <Text>{p.likes}</Text>
-            </Button>
           </View>
         ))}
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -72,13 +63,33 @@ const SearchedUserProfile = ({ route }) => {
 export default SearchedUserProfile;
 
 const styles = StyleSheet.create({
-  postContainer: {
-    flex: 1,
-    height: 300,
-    flexDirection: "column",
+  header:{
+    fontSize: 23,
+    color: 'rgba(39, 39, 39, 1)',
+    fontStyle: 'italic',
+    fontWeight: '400',
+    textAlign: 'center'
   },
-  postImage: {
+  postImage:{
     height: 250,
-    margin: 10,
+  },
+  postContainer:{
+    // flex: 1,
+    // height: 300,
+    backgroundColor: '#dedede',
+    flexDirection: 'column',
+    borderColor: '#d4d4d4',
+    borderWidth: 1,
+    borderRadius: 5,
+    marginHorizontal: 5,
+    marginVertical: 8,
+    paddingHorizontal: 3,
+    paddingVertical: 1,
+    paddingBottom: 5
+  },
+  postCaption:{
+    fontSize: 17,
+    paddingHorizontal: 5,
+    paddingVertical: 3
   },
 });

@@ -91,41 +91,94 @@ const Feed = () => {
   }, []);
 
   return (
-    <ScrollView>
+    <>
+    <View style={styles.header}>
+      <Text style={styles.headerText}>Intelligram</Text>
+    </View>
+    <ScrollView showsVerticalScrollIndicator={false}>
     <View>
       {posts?.map((p) => (
         <View key={p[0]} style={styles.postContainer}>
-          <Text>{p[1].author}</Text>
-          <Text>{p[1].caption}</Text>
+          <Text style={styles.postAuthor}>{p[1].author}</Text>
           <Image source={{uri: p[1].image}} style={styles.postImage} />
+          <Text style={styles.postCaption}>{p[1].caption}</Text>
           {likedPosts.includes(p[0]) ? 
-            <Button type="clear" onPress={() => removeLikes(currentUser.uid,p[0])}>
-              <IonIcon name={"heart"} size={16} color="crimson"/>
-              <Text>{p[1].likes}</Text>
+            <Button style={styles.btn} type="clear" onPress={() => removeLikes(currentUser.uid,p[0])}>
+              <IonIcon name={"heart"} size={20} color="crimson"/>
+              <Text style={styles.likes}>{p[1].likes}</Text>
             </Button>
               : 
-            <Button type="clear" onPress={() => addLikes(currentUser.uid,p[0])}>
-              <IonIcon name={"heart-outline"} size={16} color="crimson"/>
-              <Text>{p[1].likes}</Text>
+            <Button style={styles.btn} type="clear" onPress={() => addLikes(currentUser.uid,p[0])}>
+              <IonIcon name={"heart-outline"} size={20} color="crimson"/>
+              <Text style={styles.likes}>{p[1].likes}</Text>
             </Button>
             }
         </View>
       ))}
     </View>
     </ScrollView>
+    </>
   )
 }
 
 export default Feed
 
 const styles = StyleSheet.create({
+  container:{
+    // backgroundColor: 'rgba(50, 50, 50, 1)',
+  },
+  header:{
+    width: '100%',
+    height: 65,
+    backgroundColor: 'rgba(39, 39, 39, 1)',
+    justifyContent: 'center'
+  },
+  headerText:{
+    fontSize: 25,
+    color: 'wheat',
+    marginLeft: 8,
+    letterSpacing: 2,
+    fontStyle: 'italic'
+  },
   postContainer:{
-    flex: 1,
-    height: 300,
-    flexDirection: 'column'
+    // flex: 1,
+    // height: 300,
+    backgroundColor: '#dedede',
+    flexDirection: 'column',
+    borderColor: '#d4d4d4',
+    borderWidth: 1,
+    borderRadius: 5,
+    marginHorizontal: 5,
+    marginVertical: 8,
+    paddingHorizontal: 3,
+    paddingVertical: 1,
   },
   postImage:{
     height: 250,
-    margin: 10,
+  },
+  postAuthor:{
+    fontSize: 20,
+    fontWeight: "400",
+    // fontStyle: 'italic',
+    paddingHorizontal: 5,
+    paddingVertical: 8
+  },
+  postCaption:{
+    fontSize: 17,
+    paddingHorizontal: 5,
+    paddingVertical: 3
+  },
+  btn:{
+    width: 80,
+    height: 40,
+    borderRadius: 5,
+    backgroundColor: '#bababa',
+    alignItems: "center",
+    marginHorizontal: 'auto',
+    marginBottom: 5
+  },
+  likes:{
+    fontSize: 17
   }
+
 })
