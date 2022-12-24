@@ -1,8 +1,8 @@
 import { StyleSheet } from "react-native";
 import { React } from "react";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Search from './components/Search'
-import SearchedUserProfile from './components/SearchedUserProfile'
+import Search from './SearchStack/Search'
+import SearchedUserProfile from './SearchStack/SearchedUserProfile'
 
 const Stack = createNativeStackNavigator();
 

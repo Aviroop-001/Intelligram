@@ -2,10 +2,10 @@ import { StyleSheet, Text, View, Image, FlatList, ScrollView } from "react-nativ
 import { Button } from '@rneui/themed';
 import { useState, React, useEffect } from "react";
 import { doc, getDocs, getDoc, collection, query, where, onSnapshot } from "firebase/firestore";
-import { storage, db } from "../../firbase";
+import { storage, db } from "../../../../firbase";
 import { useSelector, useDispatch } from "react-redux";
 import IonIcon from 'react-native-vector-icons/Ionicons';
-import { addLikes, removeLikes } from "./functions";
+import { addLikes, removeLikes } from "../../functions";
 
 const Feed = ({navigation}) => {
   //redux

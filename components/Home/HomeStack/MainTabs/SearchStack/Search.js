@@ -3,7 +3,7 @@ import { useState, React } from "react";
 import { Input } from "@rneui/themed";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { doc, getDocs, collection, query, where } from "firebase/firestore";
-import { db } from "../../../firbase";
+import { db } from "../../../../../firbase";
 import { ScrollView } from "react-native-web";
 
 const Search = ({ navigation }) => {

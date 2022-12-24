@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View, FlatList } from "react-native";
 import { useState, React, useEffect } from "react";
 import { doc, getDocs, collection, query, where } from "firebase/firestore";
-import { storage, db } from "../../firbase";
+import { storage, db } from "../../../../firbase";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchCurrentUserPostsRedux } from "../../Redux/userSlice";
+import { fetchCurrentUserPostsRedux } from "../../../../Redux/userSlice";
 
 const Profile = ({navigation}) => {
   //redux

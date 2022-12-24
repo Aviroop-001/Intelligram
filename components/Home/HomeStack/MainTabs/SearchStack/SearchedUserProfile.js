@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image, ScrollView} from "react-native";
 import { Button } from '@rneui/themed';
 import { useState, useEffect, React } from "react";
 import { doc, getDocs, collection, query, where } from "firebase/firestore";
-import { db } from "../../../firbase";
+import { db } from "../../../../../firbase";
 import IonIcon from 'react-native-vector-icons/Ionicons';
 
 const SearchedUserProfile = ({ route }) => {

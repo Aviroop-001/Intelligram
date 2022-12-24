@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import * as DocumentPicker from "expo-document-picker";
 import { Input, Button } from '@rneui/themed';
 import { useSelector, useDispatch } from "react-redux";
-import { fetchCurrentUserPostsRedux } from "../../Redux/userSlice";
-import { storage, db } from "../../firbase";
+import { fetchCurrentUserPostsRedux } from "../../../Redux/userSlice";
+import { storage, db } from "../../../firbase";
 import { doc, setDoc, addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 // import * as Progress from 'react-native-progress';
