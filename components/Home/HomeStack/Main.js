@@ -24,7 +24,6 @@ const Main = ({navigation}) => {
   return (
     <View style={styles.container}>
       {/* Bottom Tab Navigator */}
-      {/* <NavigationContainer style={styles.bottomTab}> */}
       <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen name="Feed" component={Feed} options ={{
         tabBarShowLabel: false,
@@ -57,7 +56,6 @@ const Main = ({navigation}) => {
           <Ionicons name="person-circle-outline" color={color} size={40}/>  )  
       }}/>
     </Tab.Navigator>
-    {/* </NavigationContainer> */}
     </View>
   )
 }

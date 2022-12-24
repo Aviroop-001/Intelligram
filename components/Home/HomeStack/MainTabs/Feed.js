@@ -19,21 +19,6 @@ const Feed = ({navigation}) => {
 
   //functions
 
-  // let postsArray = [];
-  // const fetchAllPosts = async () => {
-  //   console.log("fetching All posts");
-  //   try {
-  //     const allDocs = await getDocs(collection(db, "posts"));
-  //     allDocs.forEach((doc) => {
-  //       // console.log(doc.id, " => ", doc.data());
-  //       postsArray.push([doc.id, doc.data()]);
-  //     });
-  //     setposts(postsArray);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
   const fetchAllPostsRealTime = async() =>{
     let postsArray = [];
     console.log("fetching All posts in real-time");
