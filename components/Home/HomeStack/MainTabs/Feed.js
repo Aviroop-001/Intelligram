@@ -76,18 +76,7 @@ const Feed = ({navigation}) => {
     }
   }
 
-  //for refreshing when navigation changes
-//   useEffect(() => {
-//     const focusHandler = navigation.addListener('focus', () => {
-//         console.log('Refreshed');
-//     });
-//     return focusHandler;
-// }, [navigation]);
-
   useEffect(() => {
-    // fetchAllPosts();
-    // fetchAllPostsRealTime();
-    fetchLikedPosts(currentUser.uid);
     //updates the array of liked posts by current user as soon as user likes/dislikes a new post
     const likedPostSub = onSnapshot(doc(db,"users",currentUser.uid), (doc) => {
       fetchLikedPosts(currentUser.uid);
@@ -106,7 +95,7 @@ const Feed = ({navigation}) => {
     <ScrollView showsVerticalScrollIndicator={false}>
     <View>
       {posts?.map((p) => (
-        <View key={p[0]} style={styles.postContainer}>
+        <View key={(Math.random() + 1).toString(36)} style={styles.postContainer}>
           <Text style={styles.postAuthor}>{p[1].authorName}</Text>
           <Image source={{uri: p[1].image}} style={styles.postImage} />
           <Text style={styles.postCaption}>{p[1].caption}</Text>

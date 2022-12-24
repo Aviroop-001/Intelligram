@@ -48,7 +48,7 @@ const Compose = ({navigation}) => {
       console.error("Error adding document: ", e);
     }
     console.log("Posted Successfully");
-    navigation.navigate('Feed');
+    navigation.push('Main');
   }
 
   //* Uploads the image and then saves the post

@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { React, useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -11,8 +11,15 @@ const EmptyScreen = () => {
   return (null);
 }
 
-const Main = () => {
+const Main = ({navigation}) => {
   const Tab = createBottomTabNavigator();
+
+  useEffect(() => {
+    const focusHandler = navigation.addListener('focus', () => {
+        console.log('Refreshed');
+    });
+    return focusHandler;
+}, [navigation]);
 
   return (
     <View style={styles.container}>
