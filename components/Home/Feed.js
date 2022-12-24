@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import { addLikes, removeLikes } from "./functions";
 
-const Feed = () => {
+const Feed = ({navigation}) => {
   //redux
   const currentUser = useSelector((state) => state.user.loggedUser);
   // const currentUserPosts = useSelector((state) => state.user.userPosts);
@@ -76,9 +76,17 @@ const Feed = () => {
     }
   }
 
+  //for refreshing when navigation changes
+//   useEffect(() => {
+//     const focusHandler = navigation.addListener('focus', () => {
+//         console.log('Refreshed');
+//     });
+//     return focusHandler;
+// }, [navigation]);
+
   useEffect(() => {
     // fetchAllPosts();
-    fetchAllPostsRealTime();
+    // fetchAllPostsRealTime();
     fetchLikedPosts(currentUser.uid);
     //updates the array of liked posts by current user as soon as user likes/dislikes a new post
     const likedPostSub = onSnapshot(doc(db,"users",currentUser.uid), (doc) => {
@@ -99,7 +107,7 @@ const Feed = () => {
     <View>
       {posts?.map((p) => (
         <View key={p[0]} style={styles.postContainer}>
-          <Text style={styles.postAuthor}>{p[1].author}</Text>
+          <Text style={styles.postAuthor}>{p[1].authorName}</Text>
           <Image source={{uri: p[1].image}} style={styles.postImage} />
           <Text style={styles.postCaption}>{p[1].caption}</Text>
           {likedPosts.includes(p[0]) ? 

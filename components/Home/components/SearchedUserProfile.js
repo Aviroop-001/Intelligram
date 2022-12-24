@@ -51,8 +51,8 @@ const SearchedUserProfile = ({ route }) => {
       <ScrollView>
         {posts?.map((p) => (
           <View key={Math.random().toString(36)} style={styles.postContainer}>
-            <Text style={styles.postCaption}>{p.caption}</Text>
             <Image source={{ uri: p.image }} style={styles.postImage} />
+            <Text style={styles.postCaption}>{p.caption}</Text>
           </View>
         ))}
       </ScrollView>
