@@ -5,9 +5,10 @@ import { useState, React, useEffect } from "react";
 import { doc, getDocs, collection, query, where } from "firebase/firestore";
 import { storage, db } from "../../../../firbase";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchCurrentUserPostsRedux } from "../../../../Redux/userSlice";
+import { fetchCurrentUserPostsRedux, userLogoutRedux } from "../../../../Redux/userSlice";
+import { logoutUser } from "../../../Authentication/functions";
 
-const Profile = () => {
+const Profile = ({navigation}) => {
   //redux
   const currentUser = useSelector((state) => state.user.loggedUser);
   const currentUserPosts = useSelector((state) => state.user.userPosts);
@@ -38,10 +39,6 @@ const Profile = () => {
     }
   }
 
-  const logoutHandler = () =>{
-    console.log("User Logged out");
-  }
-
   return (
     <View style={styles.container}>
       <View>
@@ -52,7 +49,11 @@ const Profile = () => {
                 marginLeft: 180,
                 marginBottom: 15,
                 borderWidth: 0}} 
-                onPress= {() => logoutHandler()}>
+                onPress= {() => {
+                  logoutUser();
+                  dispatch(userLogoutRedux());
+                  navigation.navigate("Main");
+                }}>
           <IonIcon name="log-out-outline" size={26} color="crimson" >
             Logout
           </IonIcon>

@@ -1,5 +1,5 @@
 
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 import { doc, setDoc, getDocs, collection } from "firebase/firestore"; 
 import { auth, db } from "../../firbase";
 
@@ -42,4 +42,14 @@ const loginUser = ({email, password}) => {  //logging in user using auth
       console.log(errorMessage);
     });
 };
-export { registerUser, loginUser };
+
+const logoutUser = () =>{
+  signOut(auth).then(() => {
+    console.log("User Logged out!!!")
+  }).catch((error) => {
+    console.log(error)
+  });
+}
+
+
+export { registerUser, loginUser, logoutUser };
