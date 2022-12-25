@@ -12,6 +12,7 @@ const Register = ({navigation}) => {
   return (
     <View style={styles.container}>
       {/* <Text style={styles.headerText}>Register</Text> */}
+      <View style={styles.main}>
       <Input
         label="Username"
         placeholder="Eg. John Doe"
@@ -39,6 +40,7 @@ const Register = ({navigation}) => {
         registerUser({username, email, password})
         navigation.navigate('Login')}
       }/>
+      </View>
     </View>
   );
 };
@@ -50,7 +52,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: 'space-evenly'
+  },
+  main:{
+    height: 400,
+    marginTop: 60,
+    alignItems: "center",
   },
   headerText:{
     fontSize:25,
@@ -69,6 +75,7 @@ const styles = StyleSheet.create({
     paddingRight: 30,
     paddingTop: 5,
     paddingBottom: 5,
+    marginTop: 100
   },
   btnStyle:{
     backgroundColor: 'rgba(39, 39, 39, 1)'

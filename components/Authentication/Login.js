@@ -18,6 +18,7 @@ const Login = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.main}>
       {/* <Text style={styles.headerText}>Login</Text> */}
       <Input
         label="Email"
@@ -55,6 +56,7 @@ const Login = ({ navigation }) => {
           // navigation.reset('Home')
         }}
       />
+      </View>
     </View>
   );
 };
@@ -66,7 +68,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "space-evenly",
+    // justifyContent: "space-around",
+  },
+  main:{
+    height: 400,
+    marginTop: 100,
+    alignItems: "center",
   },
   headerText: {
     fontSize: 25,
@@ -77,6 +84,7 @@ const styles = StyleSheet.create({
     width: 300,
     height: 40,
     marginTop: 60,
+    padding: 20,
   },
   btnContainer: {
     width: 200,
@@ -87,6 +95,7 @@ const styles = StyleSheet.create({
     paddingRight: 30,
     paddingTop: 5,
     paddingBottom: 5,
+    marginTop: 100,
   },
   btnStyle: {
     backgroundColor: "rgba(39, 39, 39, 1)",
