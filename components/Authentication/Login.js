@@ -16,6 +16,33 @@ const Login = ({ navigation }) => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState();
 
+  //functions
+  const userLoginHandler =() =>{
+    signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              const user = userCredential.user;
+              console.log("User Logged in");
+              dispatch(userLoginRedux(user));
+            })
+            .catch((error) => {
+              const errorMessage = error.message;
+              console.log(errorMessage);
+            });
+  }
+
+  // const emailAuthCredential = credential(email, password);
+  // const loginHandler = () =>{
+  //   signInWithCredential(emailAuthCredential)
+  // .then((userCredential) => {
+  //   const user = userCredential.user;
+  //   console.log("User Logged in");
+  //   dispatch(userLoginRedux(user));
+  // })
+  // .catch((error) => {
+  //   console.log(error.message);
+  // });
+  // }
+
   return (
     <View style={styles.container}>
       <View style={styles.main}>
@@ -41,20 +68,7 @@ const Login = ({ navigation }) => {
         buttonStyle={styles.btnStyle}
         containerStyle={styles.btnContainer}
         titleStyle={styles.btnTitleStyle}
-        onPress={() => {
-          signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-              const user = userCredential.user;
-              console.log("User Logged in");
-              dispatch(userLoginRedux(user));
-            })
-            .catch((error) => {
-              const errorCode = error.code;
-              const errorMessage = error.message;
-              console.log(errorMessage);
-            });
-          // navigation.reset('Home')
-        }}
+        onPress={ () => userLoginHandler() }
       />
       </View>
     </View>
