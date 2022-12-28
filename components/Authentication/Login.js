@@ -3,9 +3,9 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../../firbase";
 import { userLoginRedux, userLogoutRedux } from "../../Redux/userSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TextInput } from "react-native";
 import React from "react";
-import { Input, Button } from "@rneui/themed";
+import { Button } from "@rneui/themed";
 import { useState } from "react";
 
 const Login = ({ navigation }) => {
@@ -26,39 +26,22 @@ const Login = ({ navigation }) => {
             })
             .catch((error) => {
               const errorMessage = error.message;
-              console.log(errorMessage);
+              console.log(errorMessage, email);
             });
   }
-
-  // const emailAuthCredential = credential(email, password);
-  // const loginHandler = () =>{
-  //   signInWithCredential(emailAuthCredential)
-  // .then((userCredential) => {
-  //   const user = userCredential.user;
-  //   console.log("User Logged in");
-  //   dispatch(userLoginRedux(user));
-  // })
-  // .catch((error) => {
-  //   console.log(error.message);
-  // });
-  // }
 
   return (
     <View style={styles.container}>
       <View style={styles.main}>
-      {/* <Text style={styles.headerText}>Login</Text> */}
-      <Input
-        label="Email"
-        autoFocus={true}
-        onChange={(e) => setemail(e.target.value)}
-        disabledInputStyle={{ background: "#ddd" }}
-        containerStyle={styles.inputContainer}
+      <TextInput
+        style={styles.inputContainer}
+        placeholder="Email"
+        onChangeText={(val) => setemail(val)}
       />
-      <Input
-        label="Enter Password"
-        onChange={(e) => setpassword(e.target.value)}
-        secureTextEntry={true}
-        containerStyle={styles.inputContainer}
+      <TextInput
+        style={styles.inputContainer}
+        placeholder="Password"
+        onChangeText={(val) => setpassword(val)}
       />
       <Button
         title="Login"
@@ -68,7 +51,10 @@ const Login = ({ navigation }) => {
         buttonStyle={styles.btnStyle}
         containerStyle={styles.btnContainer}
         titleStyle={styles.btnTitleStyle}
-        onPress={ () => userLoginHandler() }
+        onPress={ () => {
+          console.log(email)
+          userLoginHandler()} 
+        }
       />
       </View>
     </View>
@@ -96,9 +82,10 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: 300,
-    height: 40,
+    height: 70,
     marginTop: 60,
-    padding: 20,
+    padding: 10,
+    borderBottomWidth: 1
   },
   btnContainer: {
     width: 200,
