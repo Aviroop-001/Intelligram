@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, TextInput } from 'react-native'
 import React, { useState } from 'react'
 import * as DocumentPicker from "expo-document-picker";
-import { Input, Button } from '@rneui/themed';
+import { Button } from '@rneui/themed';
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCurrentUserPostsRedux } from "../../../Redux/userSlice";
 import { storage, db } from "../../../firbase";
@@ -24,6 +24,7 @@ const Compose = ({navigation}) => {
   const pickDoc = async () => {
     let result = await DocumentPicker.getDocumentAsync({});
     setimage(result);
+    console.log(result)
   };
 
   const postHandler = async(imageUrl) =>{
@@ -54,9 +55,9 @@ const Compose = ({navigation}) => {
   //* Uploads the image and then saves the post
   const uploadImage = (e) => {
     e.preventDefault();
-    console.log(e)
     const file = image.file
     if (!file) return;
+    console.log(file);
     const storageRef = ref(storage, `/socialImages/${currentUser.uid}/${Math.random().toString(36)}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
     uploadTask.on("state_changed",
@@ -80,10 +81,10 @@ const Compose = ({navigation}) => {
     <View style={styles.container}>
       {image && <Image source={{uri:image.uri}} style={{flex:1,width:300, height: 200, margin:20}} />}
       <Button title="Pick Image" onPress={pickDoc}/>
-      <Input
-        label="Caption"
-        onChange={(e) => setcaption(e.target.value)}
-        containerStyle={styles.inputContainer}
+      <TextInput
+        style={styles.inputContainer}
+        placeholder="Caption"
+        onChangeText={(val) => setcaption(val)}
       />
       <Button title='Post' type="clear" size="md" color= "wheat" buttonStyle={styles.btnStyle} containerStyle={styles.btnContainer} titleStyle={styles.btnTitleStyle}  
       onPress={uploadImage}/>
@@ -102,11 +103,13 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: 300,
-    height: 30,
-    margin: 30,
+    height: 70,
+    marginTop: 60,
+    padding: 10,
+    borderBottomWidth: 1
   },
   btnContainer: {
-    width: 100,
+    width: 180,
     margin: 30,
     backgroundColor: "rgba(39, 39, 39, 1)",
     borderRadius: 10,
@@ -114,6 +117,7 @@ const styles = StyleSheet.create({
     paddingRight: 30,
     paddingTop: 5,
     paddingBottom: 5,
+    marginTop: 40
   },
   btnStyle: {
     backgroundColor: "rgba(39, 39, 39, 1)",

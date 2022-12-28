@@ -1,10 +1,7 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from "react-native";
 import { useState, React } from "react";
-import { Input } from "@rneui/themed";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import { doc, getDocs, collection, query, where } from "firebase/firestore";
 import { db } from "../../../../../firbase";
-import { ScrollView } from "react-native-web";
 
 const Search = ({ navigation }) => {
   //states
@@ -30,17 +27,21 @@ const Search = ({ navigation }) => {
   };
 
   return (
-    <View>
-      <Input
+    <View style={styles.container}>
+      <TextInput
+        style={styles.inputContainer}
+        placeholder="Search User"
+        onChangeText={(val) => searchUser(val)}
+      />
+      {/* <Input
         style={styles.inputContainer}
         placeholder="search User"
         onChange={(e) => searchUser(e.target.value)}
-      />
+      /> */}
       {userList.length ? (
         <ScrollView style={styles.itemContainer}>
           {userList.map((l) => (
-            <TouchableOpacity
-              style={styles.item}
+            <TouchableOpacity style={styles.item}
               key={Math.random().toString(36)}
               onPress={() => navigation.navigate("SearchedUserProfile", {
                   otherUser: l
@@ -51,7 +52,7 @@ const Search = ({ navigation }) => {
           ))}
         </ScrollView>
       ) : (
-        <Text>No User Found</Text>
+        <Text style={styles.warnText}>No User Found</Text>
       )}
     </View>
   );
@@ -60,19 +61,29 @@ const Search = ({ navigation }) => {
 export default Search;
 
 const styles = StyleSheet.create({
+  container:{
+    alignItems: 'center'
+  },
   inputContainer: {
     width: 300,
+    height: 70,
+    marginTop: 60,
     padding: 10,
-    marginTop: 30,
+    borderBottomWidth: 1,
+    marginHorizontal: 40,
+    fontSize: 16,
+    marginBottom: 30,
   },
   itemContainer:{
     width: 300,
     marginHorizontal: 'auto'
   },
   item:{
-    height: 40,
-    padding: 10,
-    margin: 2,
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 5,
+    margin: 1,
     borderColor: '#d4d4d4',
     borderWidth: 1,
   },
@@ -80,5 +91,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
     justifyContent: 'center',
+  },
+  warnText:{
+    marginHorizontal: 40,
+    marginTop: 30,
+    fontSize: 18
   }
 });
