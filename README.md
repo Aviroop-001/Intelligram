@@ -25,8 +25,32 @@ React Native, Expo, React Navigation, Redux, Firebase
 ## APP DEMO
 #### <div align="left">_[App Link](https://expo.dev/@aviroop/socialApp?serviceType=classic&distribution=expo-go)_</div>
 
+#### LANDING PAGE
+<img src="https://github.com/Aviroop-001/Intelligram/blob/main/assets/insta_landing.gif" alt="landing" width="180" height="360"/>
+
+#### REGISTER
+<img src="https://github.com/Aviroop-001/Intelligram/blob/main/assets/insta_register.gif" alt="drawing" width="180" height="360"/>
+
 #### LOGIN
-![Login demo](https://github.com/Aviroop-001/Blogetra/blob/main/Blogetra_login.gif)
+<img src="https://github.com/Aviroop-001/Intelligram/blob/main/assets/insta_login.gif" alt="drawing" width="180" height="360"/>
+
+#### HOMEPAGE
+<img src="https://github.com/Aviroop-001/Intelligram/blob/main/assets/insta_homepage.gif" alt="drawing" width="180" height="360"/>
+
+#### LIKE FUNCTIONALITY
+<img src="https://github.com/Aviroop-001/Intelligram/blob/main/assets/insta_likes.gif" alt="drawing" width="180" height="360"/>
+
+#### NEW POST
+<img src="https://github.com/Aviroop-001/Intelligram/blob/main/assets/insta_newPost.gif" alt="drawing" width="180" height="360"/>
+
+#### SEARCH PAGE
+<img src="https://github.com/Aviroop-001/Intelligram/blob/main/assets/insta_search.gif" alt="drawing" width="180" height="360"/>
+
+#### PROFILE
+<img src="https://github.com/Aviroop-001/Intelligram/blob/main/assets/insta_profile.gif" alt="drawing" width="180" height="360"/>
+
+#### LOGOUT
+<img src="https://github.com/Aviroop-001/Intelligram/blob/main/assets/insta_logout.gif" alt="drawing" width="180" height="360"/>
 
 
 Any suggestions are welcome. Have a nice day :)
